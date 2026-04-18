@@ -19,3 +19,18 @@ export const getProductById = async (id) => {
     return null;
   }
 };
+
+export const addToCart = async (productData) => {
+  try {
+    const response = await fetch(`${API_URL}/cart`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(productData),
+    });
+    if (!response.ok) throw new Error('Error al añadir al carrito');
+    return await response.json(); // La API devuelve { count: X }
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
