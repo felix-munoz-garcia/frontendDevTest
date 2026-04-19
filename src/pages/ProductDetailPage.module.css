@@ -1,0 +1,110 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.backLink {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.content {
+  display: flex;
+  gap: 40px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.imageSection {
+  flex: 1 1 400px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.image {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.infoSection {
+  flex: 1 1 400px;
+}
+
+.title {
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+  color: #333;
+}
+
+.formContainer {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.formTitle {
+  margin-top: 0;
+}
+
+.formGroup {
+  margin-bottom: 15px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.addButton {
+  width: 100%;
+  padding: 15px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.addButton:hover {
+  background-color: #218838;
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+.specsList {
+  list-style: none;
+  padding: 0;
+  line-height: 2;
+}
+
+.loading, .error {
+  text-align: center;
+  margin-top: 50px;
+}

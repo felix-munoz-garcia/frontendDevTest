@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getProducts } from '../services/api';
 import { Link } from 'react-router-dom';
+import styles from './ProductListPage.module.css';
 
 const ProductListPage = () => {
   const [products, setProducts] = useState([]);
@@ -21,37 +22,63 @@ const ProductListPage = () => {
     p.model.toLowerCase().includes(search.toLowerCase())
   );
 
-  if (loading) return <h2>Cargando...</h2>;
+  if (loading) return <h2 className={styles.loading}>Cargando catálogo...</h2>;
 
   return (
-    <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
-        <h2>Catálogo ({filteredProducts.length})</h2>
-        <input 
-          type="text" 
-          placeholder="Buscar..." 
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          style={{ padding: '8px', width: '200px' }}
-        />
+    <div className={styles.container}>
+      <div className={styles.topSection}>
+        <h2 className={styles.title}>
+          Catálogo <span className={styles.count}>({filteredProducts.length})</span>
+        </h2>
+
+        <div className={styles.searchContainer}>
+          <span className={styles.searchIcon}>🔍</span>
+          <input 
+            type="text" 
+            placeholder="Buscar marca o modelo..." 
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className={styles.searchInput}
+          />
+        </div>
       </div>
 
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-        gap: '20px'
-      }}>
+      <div className={styles.grid}>
         {filteredProducts.map((p) => (
-          <Link key={p.id} to={`/product/${p.id}`} style={{ textDecoration: 'none', color: 'black' }}>
-            <div style={{ border: '1px solid #ddd', padding: '15px', borderRadius: '8px', textAlign: 'center' }}>
-              <img src={p.imgUrl} alt={p.model} style={{ height: '120px', objectFit: 'contain' }} />
-              <h3>{p.brand}</h3>
-              <p>{p.model}</p>
-              <p><strong>{p.price ? `${p.price}€` : 'N/A'}</strong></p>
+          <Link 
+            key={p.id} 
+            to={`/product/${p.id}`} 
+            className={styles.productLink}
+          >
+            <div className={styles.card}>
+              <div className={styles.imageContainer}>
+                <img 
+                  src={p.imgUrl} 
+                  alt={p.model} 
+                  className={styles.image}
+                  onError={(e) => e.target.src = 'https://via.placeholder.com/150?text=No+Image'}
+                />
+              </div>
+              <h3 style={{ margin: '0 0 5px 0', fontSize: '1.1rem', textTransform: 'uppercase' }}>
+                {p.brand}
+              </h3>
+              <p style={{ margin: '0 0 10px 0', color: '#666', fontSize: '0.95rem' }}>
+                {p.model}
+              </p>
+              <p className={styles.price}>
+                {p.price ? `${p.price}€` : 'Consultar'}
+              </p>
             </div>
           </Link>
         ))}
       </div>
+
+      {/* Mensaje si no hay resultados */}
+      {filteredProducts.length === 0 && (
+        <div className={styles.noResults}>
+          <p className={styles.noResultsText}>No se encontraron terminales que coincidan con tu búsqueda.</p>
+        </div>
+      )}
     </div>
   );
 };

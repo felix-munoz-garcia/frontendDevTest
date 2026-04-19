@@ -1,0 +1,121 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.topSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.count {
+  color: #888;
+  font-weight: 400;
+}
+
+.searchContainer {
+  position: relative;
+  flex: 0 1 350px;
+  width: 100%;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1rem;
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 12px 15px 12px 45px;
+  font-size: 1rem;
+  border: 2px solid #eee;
+  border-radius: 30px;
+  outline: none;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+.searchInput:focus {
+  border-color: #007bff;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0,123,255,0.1);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.productLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card {
+  border: 1px solid #efefef;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  background-color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  height: 100%;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.imageContainer {
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.image {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.price {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.loading {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.noResults {
+  text-align: center;
+  margin-top: 50px;
+  color: #888;
+}
+
+.noResultsText {
+  font-size: 1.2rem;
+}
