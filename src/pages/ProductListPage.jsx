@@ -73,7 +73,6 @@ const ProductListPage = () => {
         ))}
       </div>
 
-      {/* Mensaje si no hay resultados */}
       {filteredProducts.length === 0 && (
         <div className={styles.noResults}>
           <p className={styles.noResultsText}>No se encontraron terminales que coincidan con tu búsqueda.</p>

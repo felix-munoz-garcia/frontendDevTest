@@ -6,19 +6,20 @@ import ProductDetailPage from './pages/ProductDetailPage';
 import styles from './App.module.css';
 
 function App() {
-  // 2. Modificamos el estado inicial para que lea de LocalStorage
   const [cartCount, setCartCount] = useState(() => {
     const savedCart = localStorage.getItem('cart_count');
-    return savedCart ? parseInt(savedCart) : 0;
+    const count = Number(savedCart);
+    return (!isNaN(count) && count > 0) ? count : 0;
   });
 
-  // 3. Función mejorada para sumar y guardar
-  const updateCart = (countFromServer) => {
-    setCartCount(prevCount => {
-      const newCount = prevCount + 1;
-      localStorage.setItem('cart_count', newCount); // Guardamos en el navegador
-      return newCount;
-    });
+  const updateCart = (serverCount) => {
+    // Si el servidor devuelve el conteo, lo usamos. 
+    // Si no (fallback), incrementamos el local.
+    const countFromApi = serverCount?.count;
+    const finalCount = typeof countFromApi === 'number' ? countFromApi : cartCount + 1;
+    
+    setCartCount(finalCount);
+    localStorage.setItem('cart_count', finalCount);
   };
   
   const resetCart = () => {
@@ -28,12 +29,10 @@ function App() {
 
   return (
     <Router>
-      {/* Pasamos el número al Header */}
       <Header cartCount={cartCount} onResetCart={resetCart} />
       <main className={styles.mainContainer}>
         <Routes>
           <Route path="/" element={<ProductListPage />} />
-          {/* Pasamos la función de actualizar a la página de detalle */}
           <Route 
             path="/product/:id" 
             element={<ProductDetailPage onAddToCart={updateCart} />} 

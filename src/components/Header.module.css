@@ -17,6 +17,14 @@
 .logoLink {
   text-decoration: none;
   color: black;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logoIcon {
+  width: 32px;
+  height: 32px;
 }
 
 .logo {

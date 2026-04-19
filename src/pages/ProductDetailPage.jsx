@@ -3,7 +3,6 @@ import { useParams, Link } from 'react-router-dom';
 import { getProductById, addToCart } from '../services/api';
 import styles from './ProductDetailPage.module.css';
 
-// Añadimos 'onAddToCart' como prop para comunicar con App.jsx
 const ProductDetailPage = ({ onAddToCart }) => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -16,7 +15,6 @@ const ProductDetailPage = ({ onAddToCart }) => {
     const loadProduct = async () => {
       const data = await getProductById(id);
       setProduct(data);
-      // Selección por defecto de las primeras opciones disponibles
       if (data?.options?.colors?.length > 0) setSelectedColor(data.options.colors[0].code);
       if (data?.options?.storages?.length > 0) setSelectedStorage(data.options.storages[0].code);
       setLoading(false);
@@ -25,7 +23,6 @@ const ProductDetailPage = ({ onAddToCart }) => {
   }, [id]);
 
   const handleAddToCart = async () => {
-    // Preparamos el objeto según requiere la API (códigos como números)
     const selection = {
       id: product.id,
       colorCode: parseInt(selectedColor),
@@ -35,7 +32,6 @@ const ProductDetailPage = ({ onAddToCart }) => {
     const result = await addToCart(selection);
     
     if (result) {
-      // LLAMADA CLAVE: Avisamos al componente padre (App.jsx) del nuevo conteo
       onAddToCart(result.count); 
       alert(`¡Producto añadido con éxito!`);
     } else {

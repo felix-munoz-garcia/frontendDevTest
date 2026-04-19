@@ -13,7 +13,7 @@ const Breadcrumbs = () => {
         const isLast = index === pathnames.length - 1;
         return (
           <span key={name}>
-            <span className={styles.separator}>/</span>
+            <span className={styles.separator}>›</span>
             {isLast ? (
               <span className={styles.current}>{name === 'product' ? 'Detalle' : name}</span>
             ) : (

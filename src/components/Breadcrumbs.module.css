@@ -1,22 +1,30 @@
 .nav {
+  display: flex;
+  align-items: center;
   font-size: 0.85rem;
-  color: #888;
+  color: #777;
+  padding: 4px 0;
 }
 
 .link {
   color: #007bff;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 400;
+  transition: color 0.2s ease;
 }
 
 .link:hover {
-  text-decoration: underline;
+  color: #0056b3;
 }
 
 .separator {
-  margin: 0 5px;
+  margin: 0 12px;
+  color: #ccc;
+  font-size: 1rem;
+  user-select: none;
 }
 
 .current {
-  color: #333;
+  color: #222;
+  font-weight: 600;
 }

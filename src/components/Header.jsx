@@ -7,8 +7,9 @@ const Header = ({ cartCount, onResetCart }) => {
     <header className={styles.header}>
       <div className={styles.topRow}>
         <Link to="/" className={styles.logoLink}>
+          <img src="/favicon.png" alt="Logo" className={styles.logoIcon} />
           <h1 className={styles.logo}>
-            📱 MobileShop
+            MobileShop
           </h1>
         </Link>
         
